@@ -7,12 +7,22 @@ private class Test {
     c.Description;
     c.CaseNumber;
     insert c;
+    Case c2 = new Case2();
+    c2.name = "MyCase2";
+    c2.Description;
+    c2.CaseNumber;
+    insert c2;
   }
 @isTest
-static void myTest(){
- List<Case> case;
-    Test.startTest();
-    Map<Id, Case> M = new Map<Id, Case>([SELECT Id, CaseNumber (SELECT ID, Description FROM Cases) FROM Case WHERE Id IN :Trigger.new]);
-    Test.stopTest();
+ public static void myTest(){
+ List<Case> case1;
+    Map<Id, Case> c = new Map<Id, Case>([SELECT Id, CaseNumber (SELECT ID, Description FROM Cases) FROM Case WHERE Id IN :Trigger.new]);
+    System.AssertEquals(c.Description, c2.CaseNumber+c.CaseNumber);
+}
+@isTest
+public static void myTest2(){
+  List<Case> case2;
+     Map<Id, Case> c2 = new Map<Id, Case>([SELECT Id, CaseNumber (SELECT ID, Description FROM Cases) FROM Case WHERE Id IN :Trigger.new]);
+     System.AssertEquals(c2.Description, 'Caso sin hijos');
 }
 }
