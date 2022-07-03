@@ -41,7 +41,6 @@ console.log(puntuation(myPunt));
 let string = "¡Llueve a cántaros!";
 let array = [];
 let stringDevuelto = "";
-let contador = 0;
 for (let i = 0; i < string.length; i++) {
     if(string.toLowerCase().indexOf(string[i].toLowerCase())
     !==string.toLowerCase().lastIndexOf(string[i].toLowerCase())) {
