@@ -1,0 +1,16 @@
+trigger childCases on Case (before update) {
+
+    Map<Id, Case> M = new Map<Id, Case>([SELECT Id, CaseNumber (SELECT ID, Description FROM Cases) FROM Case WHERE Id IN :Trigger.new]);
+    
+    for(Case c : Trigger.new){
+        if(M.get(c.ID).Cases.size()!=0){
+            String sum;
+            for(Case cases : M.get(c.ID.Cases)){
+            sum = sum + c.Casenumber;
+            }
+            c.Description = sum;
+        }else{
+            c.Description='Caso sin hijos';
+        }
+    }
+}

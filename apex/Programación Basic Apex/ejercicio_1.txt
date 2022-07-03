@@ -1,0 +1,19 @@
+public with sharing class myFirstExercice {
+    public static  List<Contact> findAccounts(List<Opportunity> listOpp) {
+        List<Id> listAccountOpp = new List<Id>();
+        for(Integer i = 0; i <listAccountOpp.size(); i++){
+            listAccountOpp.add(listOpp[i].AccountId);
+        }
+           List<Account> getAccounts = [SELECT Id FROM Account WHERE Type = 'Other' AND Id IN :listAccountOpp];
+           List<Contact> c = new List <Contact>();
+           
+            c = [SELECT FirstName, Email FROM Contact  WHERE AccountId IN :getAccounts ORDER BY CreatedDate ASC LIMIT 50];
+           for(Integer j = 0; j<c.size(); j++){
+            if(c[j].Email == '' || c[j].Email == null){
+                c[j].Email='sinContacto@example.org';
+            }
+           }
+         update c;
+         return c;   
+    }
+}

@@ -1,0 +1,59 @@
+
+//Ejercicio 1
+
+const myList = ["Esta", "frase", "es", "más","larga"];
+
+const joinMyArray = (array) => {
+let a = "";
+for (let i = 0; i < array.length; i++) {
+     a = a + array[i] + " ";
+};
+    return a.trimEnd();
+};
+console.log(joinMyArray(myList));
+
+const myPunt = ["¡Hola Mundo!", "Que tal estas?", "¡Genial!", "¿Estás?", "¿Alo"];
+
+//Ejercicio 2
+
+const puntuation = (array) => {
+        let count = 0;
+        let result = "";
+        for (let i = 0; i < array.length; i++) {
+            let sentence = array[i];
+            if(sentence.indexOf("¡") === 0 && sentence.indexOf("!") === sentence.length-1){
+                count++;   
+            }else if (sentence.indexOf("¿") === 0 && sentence.indexOf("?") === sentence.length-1){
+                count++; 
+            }
+        };
+        if(count === 1){result = "¡Se ha encontrado "+ count + " frase con buena puntuación!";
+    }
+    else if (count === 0){result = "No se ha encontrado ninguna frase con buena puntuación"}
+    else{result = "¡Se han encontrado "+ count + " frases con buena puntuación!"};
+        return result;
+    };
+    
+console.log(puntuation(myPunt));
+
+//Ejercicio 3
+
+let string = "¡Llueve a cántaros!";
+let array = [];
+let stringDevuelto = "";
+let contador = 0;
+for (let i = 0; i < string.length; i++) {
+    if(string.toLowerCase().indexOf(string[i].toLowerCase())
+    !==string.toLowerCase().lastIndexOf(string[i].toLowerCase())) {
+        if(array.indexOf(string[i].toLowerCase())===-1){
+            array.push(string[i])
+        };
+    };
+    };  
+    for (let j = 0; j < string.length; j++) {
+        if(array.indexOf(string[j].toLowerCase())===-1){
+         stringDevuelto += "(";
+        }else{stringDevuelto += ")";  
+    };  
+};
+console.log(stringDevuelto);
