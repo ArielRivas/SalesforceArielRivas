@@ -1,0 +1,18 @@
+@isTest
+private class Test {
+  @testSetup
+  static void dataCreation() {
+    Case c = new Case();
+    c.name = "MyCase";
+    c.Description;
+    c.CaseNumber;
+    insert c;
+  }
+@isTest
+static void myTest(){
+ List<Case> case;
+    Test.startTest();
+    Map<Id, Case> M = new Map<Id, Case>([SELECT Id, CaseNumber (SELECT ID, Description FROM Cases) FROM Case WHERE Id IN :Trigger.new]);
+    Test.stopTest();
+}
+}
