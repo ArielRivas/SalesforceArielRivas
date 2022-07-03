@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-03-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <template if:true={movie}>
+        <div class="container">
+            <div>{movie.fields.display_title.value}</div>
+            <div class="price">{movie.fields.summary.value}</div>
+            <div class="description">{movie.fields.headline.value}</div>
+            <img class="product-img" src={movie.fields.multimedia.src.value}></img>
+        </div>
+    </template>
+    <template if:false={movie}>
+        <div>Select a movie</div>
+    </template>
+</template>
